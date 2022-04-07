@@ -43,13 +43,13 @@ export const Form = ({ tasks, setTasks }) => {
 				className='my-5 mx-auto w-full'
 			>
 				<input
-					className='border rounded-lg border-solid border-gray-300 p-2 mr-5 w-9/12'
+					className='border rounded-lg border-solid border-gray-300 p-2 mr-5 w-full md:w-9/12'
 					name="taskName"
 					type="text"
 					placeholder='add details'
 					onChange={handleChange}
 				/>
-				<input className='w-1/5 p-2 bg-blue-700 text-white cursor-pointer hover:bg-sky-700 border rounded-lg border-solid'
+				<input className='w-full md:w-1/5 mt-4 p-2 bg-blue-700 text-white cursor-pointer hover:bg-sky-700 border rounded-lg border-solid'
 					type="submit"
 					value="Add"
 				/>
