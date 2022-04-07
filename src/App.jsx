@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { DeleteTask } from "./components/DeleteTask"
 import { Form } from "./components/Form"
 import { Header } from "./components/Header"
@@ -6,9 +6,11 @@ import { Options } from "./components/Options"
 import { Task } from "./components/Task"
 
 export const App = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(
+    localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : []
+  )
 
-  const [option, setOption] = useState('all');
+  const [option, setOption] = useState('all')
 
   let tasksFilter = tasks
 
@@ -31,6 +33,11 @@ export const App = () => {
 
     setTasks(tasksUpdate)
   }
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks) ?? [])
+  }, [tasks])
+
 
   return (
     <>
