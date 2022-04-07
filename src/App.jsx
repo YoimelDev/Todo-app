@@ -1,0 +1,87 @@
+import { useState } from "react"
+import { DeleteTask } from "./components/DeleteTask"
+import { Form } from "./components/Form"
+import { Header } from "./components/Header"
+import { Options } from "./components/Options"
+import { Task } from "./components/Task"
+
+export const App = () => {
+  const [tasks, setTasks] = useState([]);
+
+  const [option, setOption] = useState('all');
+
+  let tasksFilter = tasks
+
+  if (option == 'all') {
+    tasksFilter = tasks
+  } else if (option == 'active') {
+    tasksFilter = tasks.filter(task => task.active == true)
+  } else {
+    tasksFilter = tasks.filter(task => task.active == false)
+  }
+
+  const deleteTask = (id) => {
+    const tasksUpdate = tasks.filter(task => task.id != id)
+
+    setTasks(tasksUpdate)
+  }
+
+  const deleteAllTasks = () => {
+    const tasksUpdate = tasks.filter(task => task.active == true)
+
+    setTasks(tasksUpdate)
+  }
+
+  return (
+    <>
+      <Header />
+
+      <div className='flex flex-col mx-auto w-6/12'>
+        <Options
+          option={option}
+          setOption={setOption}
+        />
+
+        {
+          option != 'completed'
+          && <Form
+            tasks={tasks}
+            setTasks={setTasks}
+          />
+        }
+
+
+        {/* {tasks.map(task => (
+          < Task
+            key={task.id}
+            task={task}
+            tasks={tasks}
+            setTasks={setTasks}
+            option={option}
+          />
+        ))} */}
+
+        {
+          tasksFilter.map(task => (
+            < Task
+              key={task.id}
+              task={task}
+              tasks={tasks}
+              setTasks={setTasks}
+              option={option}
+              deleteTask={deleteTask}
+            />
+          ))
+        }
+
+        {
+          option == 'completed'
+          && <DeleteTask
+            deleteAllTasks={deleteAllTasks}
+          />
+        }
+
+      </div>
+    </>
+  )
+}
