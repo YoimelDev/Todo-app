@@ -36,7 +36,7 @@ export const App = () => {
     <>
       <Header />
 
-      <div className='flex flex-col mx-auto w-6/12'>
+      <div className='flex flex-col mx-auto w-5/6 lg:w-6/12 lg:max-w-4xl'>
         <Options
           option={option}
           setOption={setOption}
