@@ -8,8 +8,8 @@ export const Options = ({ option, setOption }) => {
 	]
 
 	return (
-		<div className='flex justify-center mt-14 gap-x-28 border-b-2'>
-			<div className="flex flex-col justify-center text-center h-12 min-w-[5rem]">
+		<div className='flex flex-col md:flex-row items-center justify-center mt-14 gap-x-28 border-b-2'>
+			<div className="flex flex-col justify-center text-center h-12 min-w-[5rem] mb-4 md:mb-0">
 				<a href="#" className="h-12 min-w-[5rem]"
 					onClick={() => handleOption('all')}
 				>
@@ -23,7 +23,7 @@ export const Options = ({ option, setOption }) => {
 
 			</div>
 
-			<div className="flex flex-col justify-center text-center h-12">
+			<div className="flex flex-col justify-center text-center h-12 mb-4 md:mb-0">
 				<a href="#" className="h-12 min-w-[5rem]"
 					onClick={() => handleOption('active')}
 				>
@@ -36,7 +36,7 @@ export const Options = ({ option, setOption }) => {
 				}
 			</div>
 
-			<div className="flex flex-col justify-center text-center h-12 min-w-[5rem]">
+			<div className="flex flex-col justify-center text-center h-12 min-w-[5rem] mb-4 md:mb-0">
 				<a href="#" className="h-12"
 					onClick={() => handleOption('completed')}
 				>
